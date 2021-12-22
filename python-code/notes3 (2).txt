@@ -1,0 +1,45 @@
+Recap:
+
+ - Sorting
+ - Soring the process of arraging or rearranging the elements of a list in an order
+ - There are multiple algorithms or ways to sort a list of items
+ - Insertion sort:
+    - We should consider the first element of the list of items to always be sorted
+    - There are always two parts of the list: sorted part, unsorted part
+    - For each elkement, we are going to compare it with the sorted part of the list,
+      and finally insert in it's correct postion
+
+- Insertion sort is an inplace sorting algorithm
+- It is an inplace sorting algorithm because, we are basically modifying the input array to find the sorted list of elements
+
+- Insertion sort space complexity: O(1), Constant space complexity
+
+What is correctness?
+
+ Corectness of an algorithm is asserted when it is said that the algorithm is implemented with respect to its specification
+
+Establish the correctness of insertion sort
+ - we will do that using loop invariance
+ - It is a property that does not change across iterations of a loop.
+ - It is tool to prove correctness
+
+A loop invariant can be divided into 3 distinct parts:
+
+1. Initialization: The property is true before the loop runs
+
+2. Maintainance: The property is true in each iteration of the loop
+
+3. Termination: It will terminate once execution is finished
+
+To prove the correctness of insertion sort, this is the loop invariant:
+
+ - At the start of every iteration of the outer loop (for loop), indexed with i, the subarray until array[i]
+ consists of the original elements that were there, but in sorted order
+
+ - Initialization: The subarray starts with the first element of the list, and since at that time the subarrays contains only one item and is sorted
+
+ - Maintainance: - Every element on the left of the current element is sorted
+                 - The size of the sorted sub array increases gradually
+                 - Each element in the sorted sub array was already present in the original array
+
+ - Termination: The code will terminate after i has reached the last element in the list

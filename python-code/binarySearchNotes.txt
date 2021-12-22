@@ -1,0 +1,34 @@
+Codes discussed in today's Lecture
+Search
+Linear Search
+===============================
+Binary Search
+- Sorted dataset
+- Pick divider
+- Understand with an example
+- Answer not present
+- How to decide if BS to be used
+- 2 pointer
+- Input : sorted dataset, element to Search
+- Output : index of element
+- Write Pseudo code
+- pointer change
+- pointer condition
+- variation of sort order(Descending)
+- Implementation(iterative & recursive)
+- Complexity
+- Example : Search first occurance of element
+- Example : Search last occurance of element
+- Example : Count of an element present using linear and binary search
+- Example : Search an element in a 2D array.
+- Count number of rotations of a sorted array.
+Pseudo code :
+BinarySearch(arr, left, right, elem)
+  while (left<=right)
+    calculate mid
+    Check with mid, if elem == arr[mid] return mid
+    if arr[mid] > elem
+        right = mid-1
+    else
+        left = mid +1
+  return -1

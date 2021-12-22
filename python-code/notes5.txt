@@ -1,0 +1,48 @@
+Problem:
+
+Write a function that takes two non empty arrays of integers as input. It finds the pair of numbers (one from each array) whose absolute difference is closest to zero and returns the two numbers in a list where the number from the first array is in the first postion
+
+Note: The absolute difference between two number is the difference between them in the real number line
+
+Assumption: There exists only one pair of numbers with the smallest difference
+
+
+
+a = [-1, 5, 10, 20, 28, 3]
+
+      
+b = [26, 134, 135, 15, 17]
+
+smallest difference = 0
+smallest difference pair = [-1, 15]
+
+              |
+sorted(a) = [-1, 3, 5, 10, 20, 28]
+
+             |
+sorted(b) = [15, 17, 26, 134, 135]
+
+if secondNum > firstNum:
+    move first pointer by 1 place
+
+if firstNum > secondNum:
+    move second pointer by 1 place
+
+if firstNum == secondNum: absolute difference 
+    return [firstNum, secondNum]
+
+Algorithm (Approach with sorting):
+1. Sort both the input lists
+2. Take two markers and position them at the beginning of the inputs lists
+3. Maintain a list of two integers and a variable. The list of integers will store the pair of numbers that have the smallest difference and the variable will store the actual value of the difference
+4. Pick the integer marked by the first marker as first number and pick the integer marked by the second marker as the second number
+5. Check if the current difference is less than the smallest difference we have yet encountered, in that case go ahead and store the pair of the first and second elements in the list and their difference in the variable
+6. if the first number is greater than the second number then move the pointer in 2nd list by 1 place
+7. Otherwise if second number is greater than the first number then move the pointer in the 1st list by 1 place
+8. Otherwise if first number is equal to second number then we have found a pair with 0 absolute difference.
+   There cannot be any pair that will have a difference lesser than 0. Thus we break the loop and return 
+   the [first number, second number]
+9. Repeat steps 4 - 8 until any of the markers reach a position greater than the end of the lists
+
+
+

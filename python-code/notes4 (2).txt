@@ -1,0 +1,81 @@
+- Advantages of the insertion sort algorithm:
+1. Insertion sort takes no extra space and runs in O(1) space
+2. For already sorted or nearly sorted data, when we add a new element and want the resultant list to be sorted as well, in that case insertion sort is very efficient and runs in O(n) time
+                     |
+2, 3, 4, 5, 6, 8, 9, 0 
+___________________
+
+0, 2, 3, 4, 5, 6, 8, 9
+
+- Disdvantage:
+  - For unsorted / reverse sorted data, it is very slow, when N becomes large
+
+Problem:
+
+Write a function that takes two non empty arrays of integers as input. It finds the pair of numbers (one from each array) whose absolute difference is closest to zero and returns the two numbers in a list where the number from the first array is in the first postion
+
+Note: The absolute difference between two number is the difference between them in the real number line
+   -5            5
+___|______|______|______
+          0
+
+-5 -4 -3 -2 -1 0 1 2 3 4 5
+
+2 3 4 5 6 7
+
+a = [-1, 5, 10, 20, 28, 3]
+b = [26, 134, 135, 15, 17]
+
+smallest difference = 27
+smallest pair = [-1, 26]
+
+-1 , 26 -> 27
+-1 , 134 -> 135
+-1, 135 -> 136
+-1, 15 -> 16
+-1, 17 -> 18
+
+5 , 26 -> 21
+5, 134 -> 129
+5, 135 -> 130
+5, 15 -> 10
+5, 17 -> 12
+
+Algorithm:
+1. Maintain a list of two integers and a variable. The list of integers will store the pair of numbers that have the smallest difference and the variable will store the actual value of the difference
+2. Pick an element from the first array
+3. For each element in the first array, pick a second element from the second array
+4.  Find the absolute difference between the first number and the second number
+5. Check if the current difference is less than the smallest difference we have yet encountered, in that case go ahead and store the pair of the first and second elements in the list and their difference in the variable
+6. Repeat steps 2 - 5 until you reach the end of first array
+
+           
+         [-1, 5, 10, 20, 28, 3], [26, 134, 135, 15, 17]
+
+smallest diff = 2
+[28, 26]
+        
+                                |                 |
+Sorted = [-1, 3, 5, 10, 20, 28], [15, 17, 26, 134, 135]
+
+firstNum > secondNum:
+    move one place ahead in the second array
+
+firstNum < secondNum:
+    move one place ahead in the first array
+
+3 to 15 -> 12
+3 to 17, 3 to 26 -> 
+
+       -1               15  17       26
+_______|___|____________|___|________|
+          0
+
+
+
+
+
+
+
+
+

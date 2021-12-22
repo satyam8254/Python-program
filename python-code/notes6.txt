@@ -1,0 +1,139 @@
+Problem:
+
+Write a function that takes in an array of integers as input and returns a boolean representing whether the input array is monotonic.
+
+An array is said to be monotonic if its elements, from the left to right, are entirely non increasing or non decreasing
+
+Ex: [1, 5, 10, 10, 1100, 1101, 1102, 9001]
+
+Ex: [9001, 1102, 1101, 1100, 10, 10, 5, 1]
+
+Ex: [10, 10, 10, 10, 10, 10, 10]
+
+[10, 10, 10, 1100, 9001, 9002, 5, 1]
+         i 
+
+
+
+Dry run:
+
+[9001, 1102, 1101, 1100, 10, 10, 15, 5, 9005]
+       i - 1  i
+[]
+[1]
+[1, 2]
+[2, 1, 5]
+[-1, 1, -3] - Monotonic
+[1, 1] - Monotonic
+
+The base case: If the input array has less than or equal to 2 elements then the array is by default monotonic
+
+direction = 9001 (array[0]) - 1102 (array[1])
+
+direction > 0 - decreasing as we go from left to right
+direction < 0 - increasing as we go from left to right
+direction = 0
+
+________|______|______|___________
+               0
+
+Input: [9001, 1102, 1101, 1100, 10, 10, 15, 5, 1]
+               i-1  i, 2
+
+direction = 1102 (array[1]) - 9001 (array[0])
+          = - 7899
+if direction > 0:
+        if current direction < 0:
+            return False (Because the direction has changed)
+if direction < 0:
+    if current direction > 0:
+        return False (Because the direction has changed)
+
+1st iteration:
+
+if direction is 0:
+    direction = current direction
+    move on to the next element
+
+i = 2
+Check if direction changes:
+    current direction = array[2] - array[1]
+                      = -1
+
+2nd iteration:
+
+if direction is 0:
+    direction = current direction
+    move on to the next element
+
+i = 3
+current direction = array[3] - array[2]
+                  = 1100 - 1101
+                  = -1
+
+3rd Iteration:
+i = 4
+current direction = array[4] - array[3]
+                  = 10 - 1100
+                  = -ve
+
+4th iteration:
+i = 5
+current direction = array[5] - array[4]
+                  = 10 - 10
+                  = 0
+
+5th iteration:
+i = 6
+current direction = array[6] - array[5]
+                  = 15 - 10
+                  = 5
+return False 
+
+
+Input: [9001, 1102, 1101, 1100, 10, 10, 15, 5, 1]
+
+direction = 1102 - 9001
+          = -7899
+
+1st Iteration:
+i = 2
+current direction = array[2] - array[1]
+                  = 1101 - 1102
+                  = -1
+
+2nd Iteration:
+i = 3
+current direction = array[3] - array[2]
+                  = 1100 - 1101
+                  = -1
+
+3rd Iteration:
+i = 4
+current direction = array[4] - array[3]
+                  = 10 - 1100
+                  = -ve
+
+4th Iteration:
+i = 5
+current direction = array[5] - array[4]
+                  = 10 - 10
+                  = 0
+
+5th Iteration:
+i = 6
+current direction = array[6] - array[5]
+                  = 15 - 10
+                  = 5
+
+return False
+
+Algorithm:
+1. If the length of the array is lesser than or equal to 2 then return True (Base case)
+2. Initialize a variable called direction and assign the difference between the second element and the first element of the input array
+3. Pick the next element (2nd Index or 3rd Element) in the input array
+4. Check if the direction = 0, if that is the case then for each element that we pick, try to define the direction as the difference between the current element and the previous element and move on to the next element
+5. Check if the current element and the previous element are breaking direction, if they are then return False, otherwise move on to the next element
+6. Repeat steps: 3 - 5 until we reach the end of the list
+7. return True as we have not encuontered any pair that breaks direction
+

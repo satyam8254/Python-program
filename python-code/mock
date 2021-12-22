@@ -1,0 +1,35 @@
+``` 
+Question: We want to build a cache for a system. We want that cache to support these operations 
+
+1) PUT(key, value): Stores the key value pair
+    If key exists, we want to update the value 
+2) GET(key): Returns the value corresponding to the given key
+    If key does not exist, return -1
+
+Sample - 
+1)  put("name", "Satyam") 
+    get("name") -> "Satyam"
+```
+
+# PUT (O(N)), GET (O(N)) --> O(1), O(1)
+
+dict = {}
+
+def put(key, value): # put("name", "satyam")
+    dict[key] = value
+
+def get(key):
+    return dict[key]
+    
+def main():
+     put("name", "Satyam") 
+     put("name2", "Rishabh")
+     put("name", "abc")
+     print(get("name")) # "abc"
+     print(get("name3")) # -1
+     
+     
+     
+ System(HTML, CSS) -> Backend(DATA)
+ Login() -----------> Database (50 queries per second)
+ Login() --> Cache --> Database 
